@@ -4,7 +4,7 @@ const fahrenheitToCelsius = (temp) =>{
 }
 
 const fetchWeather = async(inputElement,callback) =>{
-    let query = ''
+    let query = '';
     if(typeof(inputElement) == "object") {
         query = inputElement.value;
     }
@@ -16,11 +16,11 @@ const fetchWeather = async(inputElement,callback) =>{
         console.log("here")
         let response = await fetch(url);
         let data = await response.json();
-        callback(data)
+        callback(data);
     }
     catch(error){
-        console.log(error)
-        alert(`${query} location not found`)
+        console.log(error);
+        alert(`${query} location not found`);
     }
 }
 

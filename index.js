@@ -8,17 +8,18 @@ const showLessButton = document.querySelector("#show-less-btn");
 const weatherSection = document.querySelector(".weather-section");
 
 const displayTodaysWeather = (data)=>{
-    weatherCard.innerText = "Address = "+data.resolvedAddress+" " +utils.fahrenheitToCelsius(data.days[0].tempmax).toFixed(2) +" Degree Celcius";
+    weatherCard.innerText = `City : ${data.resolvedAddress}  Current temperture :${utils.fahrenheitToCelsius(data.days[0].tempmax).toFixed(2)}  Degree Celcius`;
     localStorage.setItem('location',data.address.slice(0,-1));
     showMoreButton.style.display = "block"
 }
 
 const displayMoreWeathers =(data) =>{
     let weatherSection = document.querySelector(".weather-section");
-    console.log(data)
+    console.log(data);
+
     for(let i=0;i<5;i++){
         let eachWeather = document.createElement("div");
-        eachWeather.innerHTML = "date= "+data.days[i].datetime+" Address = "+data.resolvedAddress+" " +utils.fahrenheitToCelsius(data.days[i].tempmax).toFixed(2) +" Degree Celcius";
+        eachWeather.innerHTML = `Date :  ${data.days[i].datetime}  City : ${data.resolvedAddress} Excepted temperture : ${utils.fahrenheitToCelsius(data.days[i].tempmax).toFixed(2)} Degree Celcius`;
         weatherSection.append(eachWeather)
     }
     showMoreButton.style.display = "none";
@@ -27,7 +28,7 @@ const displayMoreWeathers =(data) =>{
 
 showLessButton.addEventListener('click' ,(e)=>{
     let arr = weatherSection.children
-    Array.from(arr).forEach(x=>{
+    Array.from(arr).forEach(x => {
         if(x.tagName === 'DIV' && x.id !== 'todays-weather')
             weatherSection.removeChild(x)
     })
