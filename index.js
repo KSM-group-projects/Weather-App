@@ -7,36 +7,40 @@ const showMoreButton = document.querySelector("#more-weather-btn");
 const showLessButton = document.querySelector("#show-less-btn");
 const weatherSection = document.querySelector(".weather-section");
 
-const displayTodaysWeather = (data)=>{
-    weatherCard.innerText = `City : ${data.resolvedAddress}  Current temperture :${utils.fahrenheitToCelsius(data.days[0].tempmax).toFixed(2)}  Degree Celcius`;
-    localStorage.setItem('location',data.address.slice(0,-1));
-    showMoreButton.style.display = "block"
+const displayTodaysWeather = (data,address) => {
+        utils.checkForSearch(weatherCard,weatherSection);
+        weatherCard.innerHTML = utils.weatherCardElement(data.days[0],data.resolvedAddress)
+       
+        localStorage.setItem('location', data.address.slice(0, -1));
+        showMoreButton.style.display = "block";
 }
 
-const displayMoreWeathers =(data) =>{
+const displayMoreWeathers = (data) => {
+
     let weatherSection = document.querySelector(".weather-section");
     console.log(data);
 
-    for(let i=0;i<5;i++){
+    for (let i = 1; i <= 5; i++) {
         let eachWeather = document.createElement("div");
-        eachWeather.innerHTML = `Date :  ${data.days[i].datetime}  City : ${data.resolvedAddress} Excepted temperture : ${utils.fahrenheitToCelsius(data.days[i].tempmax).toFixed(2)} Degree Celcius`;
+        eachWeather.setAttribute('class','weather-card');
+        eachWeather.innerHTML = utils.weatherCardElement(data.days[i],data.resolvedAddress)
         weatherSection.append(eachWeather)
     }
     showMoreButton.style.display = "none";
     showLessButton.style.display = "block";
 }
 
-showLessButton.addEventListener('click' ,(e)=>{
+showLessButton.addEventListener('click', (e) => {
     let arr = weatherSection.children
     Array.from(arr).forEach(x => {
-        if(x.tagName === 'DIV' && x.id !== 'todays-weather')
+        if (x.tagName === 'DIV' && x.id !== 'todays-weather')
             weatherSection.removeChild(x)
     })
     showLessButton.style.display = "none";
     showMoreButton.style.display = "block";
 })
 
-utils.queryLocation(searchButton,searchInput,displayTodaysWeather);
-utils.queryLocation(showMoreButton,"",displayMoreWeathers)
+utils.queryLocation(searchButton, searchInput, displayTodaysWeather);
+utils.queryLocation(showMoreButton, "", displayMoreWeathers)
 
 
