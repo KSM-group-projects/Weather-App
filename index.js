@@ -18,7 +18,7 @@ const displayMoreWeathers =(data) =>{
     console.log(data)
     for(let i=0;i<5;i++){
         let eachWeather = document.createElement("div");
-        eachWeather.innerHTML = "date= "+data.days[0].datetime+" Address = "+data.resolvedAddress+" " +utils.fahrenheitToCelsius(data.days[i].tempmax).toFixed(2) +" Degree Celcius";
+        eachWeather.innerHTML = "date= "+data.days[i].datetime+" Address = "+data.resolvedAddress+" " +utils.fahrenheitToCelsius(data.days[i].tempmax).toFixed(2) +" Degree Celcius";
         weatherSection.append(eachWeather)
     }
     showMoreButton.style.display = "none";
