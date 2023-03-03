@@ -7,12 +7,16 @@ const showMoreButton = document.querySelector("#more-weather-btn");
 const showLessButton = document.querySelector("#show-less-btn");
 const weatherSection = document.querySelector(".weather-section");
 
+
+weatherCard.style.display = "none";
 const displayTodaysWeather = (data,address) => {
         utils.checkForSearch(weatherCard,weatherSection);
         weatherCard.innerHTML = utils.weatherCardElement(data.days[0],data.resolvedAddress)
        
         localStorage.setItem('location', data.address.slice(0, -1));
+        weatherCard.style.display = "block";
         showMoreButton.style.display = "block";
+        weatherCard.style.display = "block";
 }
 
 const displayMoreWeathers = (data) => {
@@ -26,8 +30,10 @@ const displayMoreWeathers = (data) => {
         eachWeather.innerHTML = utils.weatherCardElement(data.days[i],data.resolvedAddress)
         weatherSection.append(eachWeather)
     }
+    
     showMoreButton.style.display = "none";
     showLessButton.style.display = "block";
+    
 }
 
 showLessButton.addEventListener('click', (e) => {
