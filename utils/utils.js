@@ -51,9 +51,16 @@ const checkForSearch = (weatherCard,weatherSection) => {
 }
 
 const weatherCardElement = (data,address) =>{
+    let date = data.datetime.slice(-2);
+    let d = new Date();
+    let datetime = new Date(data.datetime).toDateString()
+    if(date == d.getDate())
+    datetime = "Today";
+    else if(date-1 == d.getDate())
+    datetime= "Tomorrow";
     let a =  `
     <div id="date">
-        <span class="material-icons md-60   ">calendar_today</span> :<span> Today </span>
+        <span class="material-icons md-60   ">calendar_today</span> :<span> ${datetime} </span>
     </div>
     <div id="location">
         <span class="material-icons md-60" >location_on  </span> : <span>${address}</span> 
