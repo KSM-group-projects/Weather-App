@@ -3,8 +3,6 @@
     margin: 0;
 }
 
-
-
 nav{
     display: flex;
     background-color: rgb(167, 203, 25);
@@ -14,7 +12,8 @@ nav{
 }
 
 .left-section{
-    width: 50%; 
+    width: 50%;
+    text-decoration: none;
 }
 
 .left-section ul{

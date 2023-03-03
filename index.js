@@ -28,7 +28,7 @@ const displayMoreWeathers =(data) =>{
 showLessButton.addEventListener('click' ,(e)=>{
     let arr = weatherSection.children
     Array.from(arr).forEach(x=>{
-        if(x.tagName == 'DIV' && x.id !== 'todays-weather')
+        if(x.tagName === 'DIV' && x.id !== 'todays-weather')
             weatherSection.removeChild(x)
     })
     showLessButton.style.display = "none";

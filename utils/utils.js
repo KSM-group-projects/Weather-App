@@ -5,8 +5,9 @@ const fahrenheitToCelsius = (temp) =>{
 
 const fetchWeather = async(inputElement,callback) =>{
     let query = ''
-    if(typeof(inputElement) == "object")
+    if(typeof(inputElement) == "object") {
         query = inputElement.value;
+    }
     else{
         query = localStorage.getItem('location')
     }
@@ -29,7 +30,7 @@ const fetchWeather = async(inputElement,callback) =>{
 const queryLocation =(buttonElement,inputElement,callback) =>{
     buttonElement.addEventListener('click',function(){
         fetchWeather(inputElement,callback)   
-    })
+    });
 }
 
 

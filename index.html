@@ -16,27 +16,25 @@
         <!-- Left section where all the menus and Logo will be kept -->
         <div class="left-section">
             <ul id="menu">
-                <li>Home</li>
-                <li>About</li>
+                <a href="#"><li>Home</li></a>
+                <a href="#"><li>About</li></a>
             </ul>
         </div>
         <!-- Right section where all the account deatils and search input will be kept -->
         <div class="right-section">
             <ul id="search-menu">
                 <li><button class="button" id="query-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                    </button></li>
-                <li><input type="text" id="query-input" placeholder="Enter the Location........."></li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+            </button></li>
+            <li><input type="text" id="query-input" placeholder="Enter the Location........."></li>
             </ul>
         </div>
     </nav>
     <!-- Code for nav bar ends here -->
-
-
 
     <div class="weather-section">
         <div class="weather-card todays-weather" id="todays-weather">
@@ -46,9 +44,6 @@
     </div>
 
     <button id="show-less-btn">Show less</button>
-
-
-
 
     <script defer src="index.js" type="module"></script>
 </body>
