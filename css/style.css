@@ -9,7 +9,6 @@
 body {
     background-color: springgreen;
 }
-
 .weather-section {
     display: flex;
     flex-direction: column;
@@ -19,4 +18,28 @@ body {
     width: auto;    
     line-height: 30px;
     font-family: sans-serif;
+} 
+
+.weather-card{
+    text-align:center;
+    background-image: linear-gradient(to left, hsl(63, 100%, 48%),hsl(200, 100%, 50%));
+    min-height: 10vh;
+    width: 50vw;
+    color: white;
+    font-size: larger;
+    margin-bottom: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.material-icons.md-60 {
+    font-size: 40px;
+    color: white;
+}
+
+#location,#temp,#desc,#date{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10%;
 }
