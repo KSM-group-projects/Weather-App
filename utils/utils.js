@@ -12,32 +12,28 @@ const fetchWeather = async (inputElement, callback) => {
     else {
         query = localStorage.getItem('location')
     }
-    let url = '';
-    if(query === '') {
-        alert('Please enter the city name');
-        return false;
-    } else {
-        url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
-    }
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
 
     try {
         let response = await fetch(url);
         let data = await response.json();
         callback(data);
+        
     }
     catch (error) {
         console.log(error);
+
         alert(`${query} location not found`);
     }
-    query = "";
+    // clearing the input feild 
+    inputElement.value = "";
 }
-
-
-
+ 
 //Function to get display (on divElement) weather whenever the buttonElement is clicked 
 const queryLocation = (buttonElement, inputElement, callback) => {
     buttonElement.addEventListener('click', function () {
-        fetchWeather(inputElement, callback)
+        fetchWeather(inputElement, callback); 
+        buttonElement.disabled = true;
     });
 }
 
