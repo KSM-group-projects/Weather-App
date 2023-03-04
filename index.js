@@ -17,7 +17,7 @@ const displayTodaysWeather = (data,address) => {
         weatherCard.style.display = "block";
         showMoreButton.style.display = "block";
         weatherCard.style.display = "block";
-        
+
 }
 
 const displayMoreWeathers = (data) => {
@@ -31,7 +31,7 @@ const displayMoreWeathers = (data) => {
         eachWeather.innerHTML = utils.weatherCardElement(data.days[i],data.resolvedAddress)
         weatherSection.append(eachWeather)
     }
-    
+
     showMoreButton.style.display = "none";
     showLessButton.style.display = "block";
     
@@ -47,6 +47,15 @@ showLessButton.addEventListener('click', (e) => {
     showMoreButton.style.display = "block";
 })
 
+searchButton.disabled = true;
+// checking of input feild is not empty
+searchInput.onkeyup = () => {
+    if(searchInput.value.length > 0) {
+        searchButton.disabled = false;
+    } else {
+        searchButton.disabled = true;
+    }
+}
 utils.queryLocation(searchButton, searchInput, displayTodaysWeather);
 utils.queryLocation(showMoreButton, "", displayMoreWeathers)
 
