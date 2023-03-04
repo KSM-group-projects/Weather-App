@@ -7,8 +7,14 @@ const showMoreButton = document.querySelector("#more-weather-btn");
 const showLessButton = document.querySelector("#show-less-btn");
 const weatherSection = document.querySelector(".weather-section");
 
-
-weatherCard.style.display = "none";
+    const displaypreviousWeather = (data) => {
+        utils.checkForSearch(weatherCard,weatherSection);
+        weatherCard.innerHTML = utils.weatherCardElement(data.days[0],data.resolvedAddress)
+        weatherCard.style.display = "block";
+        showMoreButton.style.display = "block";
+        weatherCard.style.display = "block";
+        searchButton.disabled = true;
+    }
 const displayTodaysWeather = (data) => {
         utils.checkForSearch(weatherCard,weatherSection);
         weatherCard.innerHTML = utils.weatherCardElement(data.days[0],data.resolvedAddress)
@@ -57,7 +63,9 @@ searchInput.onkeyup = () => {
         searchButton.disabled = true;
     }
 }
-utils.queryLocation(searchButton, searchInput, displayTodaysWeather);
-utils.queryLocation(showMoreButton, "", displayMoreWeathers)
 
 
+    searchButton.disabled = true;
+    utils.prevFetchWeather(displaypreviousWeather);
+    utils.queryLocation(searchButton, searchInput, displayTodaysWeather);
+    utils.queryLocation(showMoreButton, "", displayMoreWeathers)
