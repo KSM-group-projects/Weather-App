@@ -65,7 +65,6 @@ searchInput.onkeyup = () => {
 }
 
 
-    searchButton.disabled = true;
     utils.prevFetchWeather(displaypreviousWeather);
     utils.queryLocation(searchButton, searchInput, displayTodaysWeather);
     utils.queryLocation(showMoreButton, "", displayMoreWeathers)
