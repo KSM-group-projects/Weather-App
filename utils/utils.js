@@ -12,12 +12,12 @@ const fetchWeather = async (inputElement, callback) => {
     else {
         query = localStorage.getItem('location')
     }
-
+    let url = '';
     if(query === '') {
         alert('Please enter the city name');
         return false;
     } else {
-        const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
+        url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
     }
 
     try {
@@ -29,6 +29,7 @@ const fetchWeather = async (inputElement, callback) => {
         console.log(error);
         alert(`${query} location not found`);
     }
+    query = "";
 }
 
 
