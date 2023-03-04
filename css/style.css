@@ -32,6 +32,10 @@ body {
     border-bottom-right-radius: 20px;
 }
 
+.weather-card:hover {
+    background-color: black;
+}
+
 .material-icons.md-60 {
     font-size: 40px;
     color: white;
@@ -42,4 +46,22 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding-left: 10%;
+}
+
+.btn {
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    padding: 14px , 40px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+.btn:hover {
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
 }
