@@ -17,6 +17,7 @@ const displayTodaysWeather = (data,address) => {
         weatherCard.style.display = "block";
         showMoreButton.style.display = "block";
         weatherCard.style.display = "block";
+        
 }
 
 const displayMoreWeathers = (data) => {
