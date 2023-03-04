@@ -12,7 +12,6 @@ const fetchWeather = async (inputElement, callback) => {
         inputElement.value = "";
     }
     else {
-        console.log("here")
         query = localStorage.getItem('location')
     }
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
@@ -21,7 +20,7 @@ const fetchWeather = async (inputElement, callback) => {
         let response = await fetch(url);
         let data = await response.json();
         callback(data);
-        
+
     }
     catch (error) {
         console.log(error);
@@ -87,6 +86,7 @@ let obj = {
     fahrenheitToCelsius: fahrenheitToCelsius,
     checkForSearch:checkForSearch,
     weatherCardElement:weatherCardElement,
+    fetchWeather,fetchWeather
 };
 
 export default obj;

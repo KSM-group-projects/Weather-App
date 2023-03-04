@@ -7,18 +7,24 @@ const showMoreButton = document.querySelector("#more-weather-btn");
 const showLessButton = document.querySelector("#show-less-btn");
 const weatherSection = document.querySelector(".weather-section");
 
-
-weatherCard.style.display = "none";
+const displaypreviousWeather = (data) => {
+    utils.checkForSearch(weatherCard, weatherSection);
+    weatherCard.innerHTML = utils.weatherCardElement(data.days[0], data.resolvedAddress)
+    weatherCard.style.display = "block";
+    showMoreButton.style.display = "block";
+    weatherCard.style.display = "block";
+    searchButton.disabled = true;
+}
 const displayTodaysWeather = (data) => {
-        utils.checkForSearch(weatherCard,weatherSection);
-        weatherCard.innerHTML = utils.weatherCardElement(data.days[0],data.resolvedAddress)
-       
-        localStorage.setItem('location', data.address.slice(0, -1));
-        weatherCard.style.display = "block";
-        showMoreButton.style.display = "block";
-        weatherCard.style.display = "block";
+    utils.checkForSearch(weatherCard, weatherSection);
+    weatherCard.innerHTML = utils.weatherCardElement(data.days[0], data.resolvedAddress)
 
-        searchButton.disabled = true;
+    localStorage.setItem('location', data.address.slice(0, -1));
+    weatherCard.style.display = "block";
+    showMoreButton.style.display = "block";
+    weatherCard.style.display = "block";
+
+    searchButton.disabled = true;
 }
 
 const displayMoreWeathers = (data) => {
@@ -28,14 +34,14 @@ const displayMoreWeathers = (data) => {
 
     for (let i = 1; i <= 5; i++) {
         let eachWeather = document.createElement("div");
-        eachWeather.setAttribute('class','weather-card');
-        eachWeather.innerHTML = utils.weatherCardElement(data.days[i],data.resolvedAddress)
+        eachWeather.setAttribute('class', 'weather-card');
+        eachWeather.innerHTML = utils.weatherCardElement(data.days[i], data.resolvedAddress)
         weatherSection.append(eachWeather)
     }
 
     showMoreButton.style.display = "none";
     showLessButton.style.display = "block";
-    
+
 }
 
 showLessButton.addEventListener('click', (e) => {
@@ -51,13 +57,19 @@ showLessButton.addEventListener('click', (e) => {
 searchButton.disabled = true;
 // checking of input feild is not empty
 searchInput.onkeyup = () => {
-    if(searchInput.value.length > 0) {
+    if (searchInput.value.length > 0) {
         searchButton.disabled = false;
     } else {
         searchButton.disabled = true;
     }
 }
+
+weatherCard.style.display = "none"
+
+if (localStorage.getItem('location')) {
+    utils.fetchWeather("", displaypreviousWeather);
+}
+
+
 utils.queryLocation(searchButton, searchInput, displayTodaysWeather);
 utils.queryLocation(showMoreButton, "", displayMoreWeathers)
-
-
