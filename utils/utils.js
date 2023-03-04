@@ -86,7 +86,7 @@ let obj = {
     fahrenheitToCelsius: fahrenheitToCelsius,
     checkForSearch:checkForSearch,
     weatherCardElement:weatherCardElement,
-    fetchWeather,fetchWeather
+    fetchWeather:fetchWeather
 };
 
 export default obj;
