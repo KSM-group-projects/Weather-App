@@ -12,7 +12,6 @@ const fetchWeather = async (inputElement, callback) => {
         inputElement.value = "";
     }
     else {
-        console.log("here")
         query = localStorage.getItem('location')
     }
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
@@ -29,24 +28,6 @@ const fetchWeather = async (inputElement, callback) => {
         alert(`${query} location not found`);
     }
     
-}
-const prevFetchWeather = async (callback) => {
-    let query = '';
-    if(localStorage.length !== 0){
-        query = localStorage.location;
-    }
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
-
-    try {
-        let response = await fetch(url);
-        let data = await response.json();
-        callback(data);
-    }
-    catch (error) {
-        console.log(error);
-        alert(`${query} location not found`);
-    }
-
 }
  
 //Function to get display (on divElement) weather whenever the buttonElement is clicked 
@@ -101,11 +82,11 @@ const weatherCardElement = (data,address) =>{
     return a;
 }
 let obj = {
-    prevFetchWeather:prevFetchWeather,
     queryLocation: queryLocation,
     fahrenheitToCelsius: fahrenheitToCelsius,
     checkForSearch:checkForSearch,
     weatherCardElement:weatherCardElement,
+    fetchWeather,fetchWeather
 };
 
 export default obj;
