@@ -8,7 +8,10 @@ const fetchWeather = async (inputElement, callback) => {
 
     if (typeof (inputElement) === "object") {
         query = inputElement.value;
+        // clearing the input feild 
+        inputElement.value = "";
     }
+
     else {
         query = localStorage.getItem('location')
     }
@@ -25,8 +28,6 @@ const fetchWeather = async (inputElement, callback) => {
 
         alert(`${query} location not found`);
     }
-    // clearing the input feild 
-    inputElement.value = "";
 }
  
 //Function to get display (on divElement) weather whenever the buttonElement is clicked 
