@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: springgreen;
+    background-color: skyblue;
 }
 .weather-section {
     display: flex;
@@ -22,7 +22,7 @@ body {
 
 .weather-card{
     text-align:center;
-    background-image: linear-gradient(to left, hsl(63, 100%, 48%),hsl(200, 100%, 50%));
+    background-image: linear-gradient(to right top,hsl(200, 100%, 50%),hsl(200, 100%, 50%), hsl(187, 98%, 83%));
     min-height: 10vh;
     width: 50vw;
     color: white;
@@ -30,6 +30,7 @@ body {
     margin-bottom: 20px;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    box-shadow: 5px 10px 10px #47d0da;
 }
 
 .weather-card:hover {
@@ -49,19 +50,36 @@ body {
 }
 
 .btn {
-    color: white;
-    background-color: #666666;
-    border: 2px solid black;
-    padding: 14px , 40px;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 3px;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 7px;
+    transition-duration: .4s;
+    width: 6rem;
+    height: 1.2rem;
+    background-image: linear-gradient(to right top,hsl(200, 100%, 50%),hsl(200, 100%, 50%), hsl(187, 98%, 83%));
+    border-radius: 7px;
+    margin-bottom:10px;
+    border: none;
 }
 .btn:hover {
     transition-duration: 0.4s;
-    background-color: white;
-    color: black;
+    animation: color 2ms;
+    animation-name: color;
+    animation-duration: .2s;
+}
+
+@keyframes color {
+    0%{
+        background-image: linear-gradient(to right top,hsl(200, 100%, 50%),hsl(200, 100%, 50%), hsl(187, 98%, 83%));
+      }
+      10%{
+        background-image: linear-gradient(to right top,hsl(200, 100%, 50%),hsl(200, 100%, 50%),hsl(187, 98%, 83%),hsl(200, 100%, 50%) );
+      }
+      50%{
+        background-image: linear-gradient(to right top,hsl(200, 100%, 50%),hsl(187, 98%, 83%),hsl(200, 100%, 50%) );
+      }
+      60%{
+        background-image: linear-gradient(to left bottom,hsl(200, 100%, 50%),hsl(200, 100%, 50%), hsl(187, 98%, 83%),hsl(200, 100%, 50%));
+      }
+      100% {
+        background-image: linear-gradient(to left bottom,hsl(200, 100%, 50%),hsl(200, 100%, 50%), hsl(187, 98%, 83%));
+        
+      }
 }
