@@ -5,13 +5,21 @@ const fahrenheitToCelsius = (temp) => {
 
 const fetchWeather = async (inputElement, callback) => {
     let query = '';
-    if (typeof (inputElement) == "object") {
+
+    if (typeof (inputElement) === "object") {
         query = inputElement.value;
     }
     else {
         query = localStorage.getItem('location')
     }
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
+
+    if(query === '') {
+        alert('Please enter the city name');
+        return false;
+    } else {
+        const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
+    }
+
     try {
         let response = await fetch(url);
         let data = await response.json();
@@ -80,6 +88,6 @@ let obj = {
     fahrenheitToCelsius: fahrenheitToCelsius,
     checkForSearch:checkForSearch,
     weatherCardElement:weatherCardElement,
-}
+};
 
 export default obj;
