@@ -11,8 +11,8 @@ const fetchWeather = async (inputElement, callback) => {
         // clearing the input feild 
         inputElement.value = "";
     }
-
     else {
+        console.log("here")
         query = localStorage.getItem('location')
     }
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}%7D?unitGroup=us&key=HEG4F8F8KWRVJJMYWBWT267MR&contentType=json`;
@@ -28,13 +28,14 @@ const fetchWeather = async (inputElement, callback) => {
 
         alert(`${query} location not found`);
     }
+    
 }
  
 //Function to get display (on divElement) weather whenever the buttonElement is clicked 
 const queryLocation = (buttonElement, inputElement, callback) => {
     buttonElement.addEventListener('click', function () {
         fetchWeather(inputElement, callback); 
-        buttonElement.disabled = true;
+        // buttonElement.disabled = true;
     });
 }
 

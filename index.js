@@ -9,7 +9,7 @@ const weatherSection = document.querySelector(".weather-section");
 
 
 weatherCard.style.display = "none";
-const displayTodaysWeather = (data,address) => {
+const displayTodaysWeather = (data) => {
         utils.checkForSearch(weatherCard,weatherSection);
         weatherCard.innerHTML = utils.weatherCardElement(data.days[0],data.resolvedAddress)
        
@@ -18,6 +18,7 @@ const displayTodaysWeather = (data,address) => {
         showMoreButton.style.display = "block";
         weatherCard.style.display = "block";
 
+        searchButton.disabled = true;
 }
 
 const displayMoreWeathers = (data) => {
