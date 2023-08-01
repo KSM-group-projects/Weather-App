@@ -1,4 +1,4 @@
-* We designing web-application using HTML5 , CSS3 and javascript.
+* We have degined web-application using HTML5 , CSS3 and javascript.
 
 * Which is going to provide the weather details of selected city by the users. 
 
